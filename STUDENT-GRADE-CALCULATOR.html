@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge 1: Student Grade Generator Documentation</title>
+</head>
+<body>
+   
+
+    <script>
+        // Function to generate student grade based on input marks
+        function generateStudentGrade() {
+            try {
+                // Get user input for student marks
+                var marks = parseFloat(prompt("Enter student marks (0-100):"));
+
+                // Check if marks are within the valid range
+                if (!isNaN(marks) && marks >= 0 && marks <= 100) {
+                    // Determine the grade based on the specified criteria
+                    var grade;
+                    if (marks > 79) {
+                        grade = 'A';
+                    } else if (marks >= 60 && marks <= 79) {
+                        grade = 'B';
+                    } else if (marks >= 50 && marks <= 59) {
+                        grade = 'C';
+                    } else if (marks >= 40 && marks <= 49) {
+                        grade = 'D';
+                    } else {
+                        grade = 'E';
+                    }
+
+                    // Output the result
+                    alert("The student grade is: " + grade);
+                } else {
+                    alert("Invalid input. Please enter marks between 0 and 100.");
+                }
+            } catch (error) {
+                alert("An error occurred. Please try again.");
+            }
+        }
+
+        // Call the function to test
+        generateStudentGrade();
+    </script>
+</body>
+</html>
