@@ -29,6 +29,7 @@ function calculateNetSalary(basicSalary, benefits) {
 
         // Calculate NHIF Deductions based on the provided rates
         let nhifDeductions;
+
         if (grossSalary <= 5999) {
             nhifDeductions = 150;
         } else if (grossSalary <= 7999) {
@@ -56,6 +57,7 @@ function calculateNetSalary(basicSalary, benefits) {
         const nssfRateTierII = 0.06; // 6% NSSF rate for Tier II
 
         let nssfDeductions;
+
         if (grossSalary <= 6000) {
             nssfDeductions = grossSalary * nssfRateTierI;
         } else if (grossSalary <= 18000) {
@@ -70,4 +72,19 @@ function calculateNetSalary(basicSalary, benefits) {
         const netSalary = grossSalary - payee - nhifDeductions - nssfDeductions;
 
         return `
-            Gross Salary
+            Gross Salary: ${grossSalary.toFixed(2)}
+            Payee (Tax): ${payee.toFixed(2)}
+            NHIF Deductions: ${nhifDeductions.toFixed(2)}
+            NSSF Deductions: ${nssfDeductions.toFixed(2)}
+            Net Salary: ${netSalary.toFixed(2)}
+        `;
+    } catch (error) {
+        return "An error occurred. Please try again.";
+    }
+}
+
+// Example usage:
+const basicSalary = parseFloat(prompt("Enter Basic Salary:"));
+const benefits = parseFloat(prompt("Enter Benefits:"));
+const result = calculateNetSalary(basicSalary, benefits);
+console.log(result);
