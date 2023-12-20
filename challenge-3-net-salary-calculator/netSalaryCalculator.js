@@ -1,22 +1,17 @@
 // Function to calculate net salary based on input basic salary and benefits
-function calculateNetSalary() {
+function calculateNetSalary(basicSalary, benefits) {
     try {
-        // Get user input for basic salary and benefits
-        var basicSalary = parseFloat(prompt("Enter Basic Salary:"));
-        var benefits = parseFloat(prompt("Enter Benefits:"));
-
         // Validate input
         if (isNaN(basicSalary) || isNaN(benefits)) {
-            alert("Invalid input. Please enter numeric values for Basic Salary and Benefits.");
-            return;
+            return "Invalid input. Please enter numeric values for Basic Salary and Benefits.";
         }
 
         // Calculate gross salary
-        var grossSalary = basicSalary + benefits;
+        const grossSalary = basicSalary + benefits;
 
         // Calculate payee (tax) based on the provided monthly rates
-        var monthlyTaxablePay = grossSalary;
-        var payeeRate;
+        const monthlyTaxablePay = grossSalary;
+        let payeeRate;
 
         if (monthlyTaxablePay <= 24000) {
             payeeRate = 0.1;
@@ -30,10 +25,10 @@ function calculateNetSalary() {
             payeeRate = 0.35;
         }
 
-        var payee = grossSalary * payeeRate;
+        const payee = grossSalary * payeeRate;
 
         // Calculate NHIF Deductions based on the provided rates
-        var nhifDeductions;
+        let nhifDeductions;
         if (grossSalary <= 5999) {
             nhifDeductions = 150;
         } else if (grossSalary <= 7999) {
@@ -57,10 +52,10 @@ function calculateNetSalary() {
         }
 
         // Calculate NSSF Deductions based on the provided tiered contribution system
-        var nssfRateTierI = 0.06; // 6% NSSF rate for Tier I
-        var nssfRateTierII = 0.06; // 6% NSSF rate for Tier II
+        const nssfRateTierI = 0.06; // 6% NSSF rate for Tier I
+        const nssfRateTierII = 0.06; // 6% NSSF rate for Tier II
 
-        var nssfDeductions;
+        let nssfDeductions;
         if (grossSalary <= 6000) {
             nssfDeductions = grossSalary * nssfRateTierI;
         } else if (grossSalary <= 18000) {
@@ -72,20 +67,7 @@ function calculateNetSalary() {
         }
 
         // Calculate net salary
-        var netSalary = grossSalary - payee - nhifDeductions - nssfDeductions;
+        const netSalary = grossSalary - payee - nhifDeductions - nssfDeductions;
 
-        // Display the result
-        alert(`
-            Gross Salary: ${grossSalary.toFixed(2)}
-            Payee (Tax): ${payee.toFixed(2)}
-            NHIF Deductions: ${nhifDeductions.toFixed(2)}
-            NSSF Deductions: ${nssfDeductions.toFixed(2)}
-            Net Salary: ${netSalary.toFixed(2)}
-        `);
-    } catch (error) {
-        alert("An error occurred. Please try again.");
-    }
-}
-
-// Call the function to test
-calculateNetSalary();
+        return `
+            Gross Salary
