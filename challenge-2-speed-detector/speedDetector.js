@@ -1,30 +1,27 @@
 // Function to calculate demerit points and check for license suspension
-function calculateDemeritPoints() {
+function calculateDemeritPoints(speed) {
     try {
-        // Get user input for car speed
-        var speed = parseFloat(prompt("Enter Car Speed (km/h):"));
-
         // Validate input
         if (isNaN(speed) || speed < 0) {
-            alert("Invalid input. Please enter a non-negative numeric value.");
-            return;
+            return "Invalid input. Please enter a non-negative numeric value.";
         }
 
         // Calculate demerit points based on the provided criteria
-        var speedLimit = 70;
-        var demeritPoints = Math.floor((speed - speedLimit) / 5);
+        const speedLimit = 70;
+        const demeritPoints = Math.floor((speed - speedLimit) / 5);
 
         // Check for license suspension
         if (demeritPoints > 12) {
-            alert("License suspended. Too many demerit points.");
+            return "License suspended. Too many demerit points.";
         } else {
-            // Display the result
-            alert(`Demerit Points: ${demeritPoints}`);
+            return `Demerit Points: ${demeritPoints}`;
         }
     } catch (error) {
-        alert("An error occurred. Please try again.");
+        return "An error occurred. Please try again.";
     }
 }
 
-// Call the function to test
-calculateDemeritPoints();
+// Example usage:
+const carSpeed = parseFloat(prompt("Enter Car Speed (km/h):"));
+const result = calculateDemeritPoints(carSpeed);
+console.log(result);
