@@ -1,35 +1,29 @@
 // Function to generate student grade based on input marks
-function generateStudentGrade() {
+function generateStudentGrade(marks) {
     try {
-        // Get user input for student marks
-        var marks = parseFloat(prompt("Enter Student Marks:"));
-
         // Validate input
         if (isNaN(marks) || marks < 0 || marks > 100) {
-            alert("Invalid input. Please enter a numeric value between 0 and 100.");
-            return;
+            return "Invalid input. Please enter a numeric value between 0 and 100.";
         }
 
         // Determine the grade based on the provided criteria
-        var grade;
         if (marks > 79) {
-            grade = 'A';
+            return 'A';
         } else if (marks >= 60 && marks <= 79) {
-            grade = 'B';
+            return 'B';
         } else if (marks >= 50 && marks <= 59) {
-            grade = 'C';
+            return 'C';
         } else if (marks >= 40 && marks <= 49) {
-            grade = 'D';
+            return 'D';
         } else {
-            grade = 'E';
+            return 'E';
         }
-
-        // Display the result
-        alert(`Student Grade: ${grade}`);
     } catch (error) {
-        alert("An error occurred. Please try again.");
+        return "An error occurred. Please try again.";
     }
 }
 
-// Call the function to test
-generateStudentGrade();
+// Example usage:
+const studentMarks = parseFloat(prompt("Enter Student Marks:"));
+const result = generateStudentGrade(studentMarks);
+console.log(`Student Grade: ${result}`);
